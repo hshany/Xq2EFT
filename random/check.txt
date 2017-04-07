@@ -1,0 +1,17 @@
+-----checking g_0-------
+check g_0, -250 energies are not calculated
+-----checking g_1-------
+check g_1, -250 energies are not calculated
+-----checking g_2-------
+check g_2, -250 energies are not calculated
+-----checking g_3-------
+check g_3, -250 energies are not calculated
+-----checking g_4-------
+check g_4, -250 energies are not calculated
+-----checking g_5-------
+check g_5, -250 energies are not calculated
+-----checking g_6-------
+check g_6, -250 energies are not calculated
+-----checking g_7-------
+check g_7, -250 energies are not calculated
+-----checking g_8-------
