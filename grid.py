@@ -85,26 +85,6 @@ class Grid:
         fmt = '[' + '%.2f,'*(len(xs)-1) + '%.2f]'
         return my_y 
 
-    # fill the y values for the grid points with the supplied objective function f
-    def fill(self, f):
-        for leaf, x in self._gen_leaves_with_x():
-            leaf.y = f(x)
-
-    # save the grid parameters and y values on each grid point to a text file
-    def save(self, filename):
-        with open(filename, 'w') as file:
-            fmt = 'ANGPRM\t%f\t%f\t%f\t%f\n'
-            file.write(fmt % self.ang_params)
-            fmt = 'ORIPRM\t%f\t%f\t%f\t%f\n'
-            file.write(fmt % self.ori_params)
-            fmt = 'RS\t' + '%f\t' * (len(self.rs)-1) + '%f\n'
-            file.write(fmt % tuple(self.rs))
-            fmt = '%f\t' * 6 + '%f\n'
-            for leaf, x in self._gen_leaves_with_x():
-                if leaf.y == None:
-                    leaf.y = [0.0 for i in range(7)]
-                file.write(fmt % tuple(leaf.y))
-
     # load the grid parameters from a text file, build the grid structure, then 
     # load y values for the grid points from the text file
     def load(self, filename):    
@@ -135,7 +115,7 @@ class Grid:
         for leaf, x in self._gen_leaves_with_x_help(self.headNode, []):
             yield x
 
-    # Generate node leaves together with their x values, used by fill()
+    # Generate node leaves together with their x values, used by load()
     def _gen_leaves_with_x(self):
         for leaf, x in self._gen_leaves_with_x_help(self.headNode, []):
             yield leaf, x
