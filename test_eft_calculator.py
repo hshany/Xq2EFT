@@ -2,10 +2,8 @@
 
 import numpy as np
 from time import time
-import heapq
-from matplotlib import pyplot as plt
 
-from eft_calculator import EFT_calculator, Water
+from eft_calculator import EFT_calculator
 import tools
 
 
@@ -20,14 +18,9 @@ def test_random_set():
     torque = []
     t0 = time()
     for i in range(2, 2000):
-        # load atomic coor 
         name = 'test%04d.inp' % i
         coors = load_coordinates(name)
-        # convert atomic coor to r, phi, theta... 
-        X0, q0 = calculator.mol.atomic2Xq(coors[:3])
-        X1, q1 = calculator.mol.atomic2Xq(coors[3:])
-        # evaluate with calculator
-        eft = calculator.eval(X0, q0, X1, q1)
+        eft = calculator.eval(coors[:3], coors[3:])
         ener.append(eft[0])
         force.append(eft[1:4])
         torque.append(eft[4:7])
